@@ -1,6 +1,5 @@
 from typing import List
 def main():
-    v = [0,1,0,1,0,1,99]
     root=TreeNode(6)
     add(root,TreeNode(5))
     add(root,TreeNode(7))
