@@ -1,0 +1,13 @@
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.exe
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.deps.json
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.runtimeconfig.json
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.runtimeconfig.dev.json
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.dll
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\bin\Debug\netcoreapp3.1\12 Week program.pdb
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.csprojAssemblyReference.cache
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.AssemblyInfoInputs.cache
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.AssemblyInfo.cs
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.csproj.CoreCompileInputs.cache
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.dll
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.pdb
+H:\Challenges\100DaysOfCodeChallenge\12 Week program\obj\Debug\netcoreapp3.1\12 Week program.genruntimeconfig.cache

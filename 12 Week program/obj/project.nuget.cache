@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RPe313cTCQ7bEVZ0Yqa75+Qh/8qDx+p7jH3+vFFqjA9eIx13LEYfO4WRojE6TUEjDImGsnCPBExyhMDRkQGESg==",
+  "success": true,
+  "projectFilePath": "H:\\Challenges\\100DaysOfCodeChallenge\\12 Week program\\12 Week program.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vicky\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,14 +1,13 @@
+/*
+ * @lc app=leetcode id=707 lang=csharp
+ *
+ * [707] Design Linked List
+ */
 
-using System.Security.Principal;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
+// @lc code=start
+public class MyLinkedList {
 
-namespace LinkedList
-{
-    public class MyLinkedList
-    {
-        public int Length { get; set; }
+     public int Length { get; set; }
         public Node Root { get; set; }
         public MyLinkedList()
         {
@@ -30,7 +29,7 @@ namespace LinkedList
                 temp = temp.Next;
                 count++;
             }
-            return 0;
+            return -1;
         }
 
         /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
@@ -84,24 +83,25 @@ namespace LinkedList
             
             Node curr = Root;
             Node prev = Root;
-            int count = 0;
+            int i = 0;
             if (index == 0)
             {
                 newNode.Next = Root;
                 Root = newNode;
                 return;
             }
-            while (curr != null)
+            while (curr != null && i<index)
             {
                 prev = curr;
                 curr = curr.Next;
-                count++;
-                if (index == count && curr!=null)
+                i++;
+               
+            }
+             if (index == i)
                 {
                     newNode.Next = curr;
                     prev.Next = newNode;
                 }
-            }
             return;
         }
 
@@ -112,23 +112,42 @@ namespace LinkedList
                 return;
             Node curr = Root;
             Node prev = Root;
-            int Count = 0;
+            int i = 0;
             if (index == 0)
             {
                 Root = curr.Next;
                 return;
             }
-            while (curr != null)
+            while (curr != null && i<index)
             {
                 prev = curr;
                 curr = curr.Next;
-                Count++;
-                if (Count == index && curr!=null)
-                {
-                    prev.Next = curr.Next;
-                    curr.Next = null;
-                }
+                i++;
+                
+            }
+            if (i == index)
+            {
+                prev.Next = curr?.Next;
             }
         }
-    }
 }
+  public class Node{
+        public int Data { get; set; }
+        public Node Next {get;set;}
+        public Node(int val=0,Node next=null)
+        {
+          Data=val;
+          Next=next;  
+        }
+    }
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList obj = new MyLinkedList();
+ * int param_1 = obj.Get(index);
+ * obj.AddAtHead(val);
+ * obj.AddAtTail(val);
+ * obj.AddAtIndex(index,val);
+ * obj.DeleteAtIndex(index);
+ */
+// @lc code=end
+
