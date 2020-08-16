@@ -2,73 +2,97 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
 using _12_Week_program.Stack;
 using LinkedList;
 namespace _12_Week_program
 {
     public class Program
     {
+        public static string RestoreString(string s, int[] indices)
+        {
+            char[] result = new char[indices.Length];
+            for (int i = 0; i < indices.Length; i++)
+            {
+                result[indices[i]] = s[indices[i]];
+            }
+            return string.Join("",result);
+        }
+        public static string RankTeams(string[] votes)
+        {
+            Dictionary<char, double> teamScore = new Dictionary<char, double>();
+            int n = votes[0].Length, power = 1000;
+            foreach (string s in votes)
+            {
+                for (int i = 0; i < s.Length; ++i)
+                {
+                    char team = s[i];
+                    if (teamScore.ContainsKey(team)) teamScore[team] += Math.Pow(power, n - i);
+                    else teamScore[team] = Math.Pow(power, n - i);
+                }
+            }
+            IEnumerable<char> cc = teamScore.Keys.OrderByDescending(x => teamScore[x]).ThenBy(x => x);//sort by assign value, then by team name
+            return new string(cc.ToArray());
+        }
         public static void Main(string[] args)
         {
-            //string[] a = new string[]{ "a","b","a","c","d"};
-
-            //char[][] c ={
-            //    new char[]{'A', 'B', 'C', 'E' },
-            //    new char[]{'S', 'F', 'C', 'S' }, 
-            //    new char[] { 'A', 'D', 'E', 'E' } 
-            //};
-            char[][] c =
-            {
-                new char[]{'a','a'}
-            };
-            //var b= a.GroupBy(x => x);
-            //var c = b.Select(x => x.Key); 
-            var a = Program.Exist(c,"aa");
-            //MinStack m = new MinStack();
-            //m.Push(5);
-            //m.Push(-2);
-            //m.Push(3);
-            //m.Push(6);
-            //m.Pop();
-            //Console.WriteLine(m.GetMin());
-            //m.Pop();
-            //Console.WriteLine(m.GetMin());
-            //m.Pop();
-            //Console.WriteLine(m.GetMin());
-
+            var x = Program.RankTeams(new string[] { "BCA", "CAB", "CBA", "CAB", "ACB", "BAC" });
+            //QuickSortAlgo qs = new QuickSortAlgo();
+            //int[] nums = new int[] { -2,3,-5 };
+            //Program.quickSort(nums,0,nums.Length-1);
+            //var x=nums.Length;
 
         }
-        //public static bool Exist(char[][] board, string word)
-        //{
-        //    char[] x = word.ToCharArray();
-        //    var wordSearch = new List<char>();
+        static int partition(int[] arr, int low,
+                                   int high)
+        {
+            int pivot = arr[high];
 
-        //    for (int k = 0; k < x.Length; k++)
-        //    {
-        //        bool stop = false;
-        //        for (int i = 0; i < board.Length&& !stop; i++)
-        //        {
-        //            for (int j = 0; j < board[i].Length &!stop; j++)
-        //            {
-        //                var m = x[k];
-        //                if (x[k] == board[i][j])
-        //                {
-        //                    if (wordSearch.Contains(x[k]) && (wordSearch
-        //                       ?.GroupBy(x => x)
-        //                       ?.Where(x => x.Key == m)
-        //                       ?.FirstOrDefault().Count() ?? 0) - 1 == i)
-        //                        break;
-        //                    else
-        //                    {
-        //                        wordSearch.Add(x[k]);
-        //                       stop=true;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return word == new String(wordSearch.ToArray());
-        //}
+            // index of smaller element 
+            int i = (low - 1);
+            for (int j = low; j < high; j++)
+            {
+                // If current element is smaller  
+                // than the pivot 
+                if (arr[j] < pivot)
+                {
+                    i++;
+
+                    // swap arr[i] and arr[j] 
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+            // swap arr[i+1] and arr[high] (or pivot) 
+            int temp1 = arr[i + 1];
+            arr[i + 1] = arr[high];
+            arr[high] = temp1;
+
+            return i + 1;
+        }
+
+
+        /* The main function that implements QuickSort() 
+        arr[] --> Array to be sorted, 
+        low --> Starting index, 
+        high --> Ending index */
+        static void quickSort(int[] arr, int low, int high)
+        {
+            if (low < high)
+            {
+
+                /* pi is partitioning index, arr[pi] is  
+                now at right place */
+                int pi = partition(arr, low, high);
+
+                // Recursively sort elements before 
+                // partition and after partition 
+                quickSort(arr, low, pi - 1);
+                quickSort(arr, pi + 1, high);
+            }
+        }
         public static bool Exist(char[][] board, string word)
         {
             char[] x = word.ToCharArray();
@@ -93,6 +117,7 @@ namespace _12_Week_program
             Console.WriteLine();
         }
     }
+
     public class TrieNode
     {
         public TrieNode[] children = new TrieNode[26];
@@ -105,6 +130,7 @@ namespace _12_Week_program
         }
     }
 }
+
 public class Trie
 {
 
@@ -150,21 +176,7 @@ public class Trie
     }
 
     /** Returns if there is any word in the trie that starts with the given prefix. */
-    public bool StartsWith(string prefix)
-    {
-        int lvl;
-        int pLength = prefix.Length;
-        int index;
-        TrieNode pCrawl = root;
-        for (lvl = 0; lvl < Length; lvl++)
-        {
-            index = prefix[lvl] - 'a';
-            if (pCrawl.children[index] == null)
-                return false;
-            pCrawl = pCrawl.children[index];
-        }
-        return true;
-    }
+    
 }
 
 /**
