@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using _12_Week_program.Stack;
 using LinkedList;
@@ -9,6 +10,55 @@ namespace _12_Week_program
 {
     public class Program
     {
+        public static long arrayManipulation(int n, int[][] queries)
+        {
+            int noOfQueries = queries.Length;
+            int[,] dp = new int[noOfQueries, n];
+            int highestValue = 0;
+
+            for (int j = 0; j < noOfQueries; j++)
+            {
+                var x = queries[j];
+                int start = x[0];
+                int end = x[1];
+                int value = x[2];
+                for (int i = 1; i <= n; i++)
+                {
+                    if (i >= start && i <= end)
+                    {
+                        if ((j - 1) > -1)
+                        {
+                            dp[j,i - 1] = dp[j - 1,i - 1] + value;
+                            if (highestValue < dp[j,i - 1])
+                            {
+                                highestValue = dp[j,i - 1];
+                            }
+                        }
+                        else
+                        {
+                            dp[j,i - 1] = value;
+                        }
+                    }
+                    else
+                    {
+                        dp[j,i-1] = 0;
+                    }
+                }
+            }
+            return highestValue;
+        }
+
+        public static void Main(string[] args)
+        {
+            var x = Program.arrayManipulation(5, new int[][] { new int[] { 1, 2, 100 }, new int[] { 2, 5, 100 }, new int[] { 3, 4, 100 } });
+            //var x = Program.RankTeams(new string[] { "BCA", "CAB", "CBA", "CAB", "ACB", "BAC" });
+            //QuickSortAlgo qs = new QuickSortAlgo();
+            //int[] nums = new int[] { -2,3,-5 };
+            //Program.quickSort(nums,0,nums.Length-1);
+            //var x=nums.Length;
+
+        }
+
         public static string RestoreString(string s, int[] indices)
         {
             char[] result = new char[indices.Length];
@@ -16,7 +66,7 @@ namespace _12_Week_program
             {
                 result[indices[i]] = s[indices[i]];
             }
-            return string.Join("",result);
+            return string.Join("", result);
         }
         public static string RankTeams(string[] votes)
         {
@@ -33,15 +83,6 @@ namespace _12_Week_program
             }
             IEnumerable<char> cc = teamScore.Keys.OrderByDescending(x => teamScore[x]).ThenBy(x => x);//sort by assign value, then by team name
             return new string(cc.ToArray());
-        }
-        public static void Main(string[] args)
-        {
-            var x = Program.RankTeams(new string[] { "BCA", "CAB", "CBA", "CAB", "ACB", "BAC" });
-            //QuickSortAlgo qs = new QuickSortAlgo();
-            //int[] nums = new int[] { -2,3,-5 };
-            //Program.quickSort(nums,0,nums.Length-1);
-            //var x=nums.Length;
-
         }
         static int partition(int[] arr, int low,
                                    int high)
