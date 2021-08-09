@@ -1,1 +1,5 @@
 .vscode/launch.json
+/DS_Training/bin/Debug
+/DS_Training/.vs/DS_Training/v16
+/DS_Training/obj/Debug
+/DS_Training/packages/Newtonsoft.Json.13.0.1
